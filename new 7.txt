@@ -1,0 +1,305 @@
+
+----------------------------------------------------------------------------------------------
+HOW TO CREATE A DATABASE :-
+
+mysql> CREATE DATABASE delldb;
+Query OK, 1 row affected (0.01 sec)
+
+
+----------------------------------------------------------------------------------------------
+HOW TO USE DATABASE:-
+
+mysql> use delldb
+Database changed
+mysql> CREATE TABLE student(rno INT(5),name VARCHAR(30),marks FLOAT(5.2));
+Query OK, 0 rows affected (0.03 sec)
+
+
+----------------------------------------------------------------------------------------------
+HOW TO CHECK THE VALUES OF DATABASE:-
+
+mysql> DESC student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(5)      | YES  |     | NULL    |       |
+| name  | varchar(30) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+----------------------------------------------------------------------------------------------
+HOW TO SELECT A TABLE FROM A DATABASE:-
+
+mysql> SELECT *FROM student;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO student(rno,name,marks) VALUES(101,'sushil',89.0);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DESC student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(5)      | YES  |     | NULL    |       |
+| name  | varchar(30) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM student;
++------+--------+-------+
+| rno  | name   | marks |
++------+--------+-------+
+|  101 | sushil |    89 |
++------+--------+-------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO student VALUES(102,'gopal',85.0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM student;
++------+--------+-------+
+| rno  | name   | marks |
++------+--------+-------+
+|  101 | sushil |    89 |
+|  102 | gopal  |    85 |
++------+--------+-------+
+2 rows in set (0.00 sec)
+
+
+----------------------------------------------------------------------------------------------
+HOW TO INSERT MULTIPLE VALUES IN TABLE:-
+
+mysql> INSERT INTO student VALUES(103,'parul',90.0),
+    -> (104,'martunjay',95.0),
+    -> (105,'nikil',99.9),
+    -> (106,'anish',96.0);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM student;
++------+-----------+-------+
+| rno  | name      | marks |
++------+-----------+-------+
+|  101 | sushil    |    89 |
+|  102 | gopal     |    85 |
+|  103 | parul     |    90 |
+|  104 | martunjay |    95 |
+|  105 | nikil     |  99.9 |
+|  106 | anish     |    96 |
++------+-----------+-------+
+6 rows in set (0.00 sec)
+
+
+show table;
+
+
+
+
+
+
+
+
+mysql> delete from student where rno = 106;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from student;
++------+-----------+-------+
+| rno  | name      | marks |
++------+-----------+-------+
+|  101 | sushil    |    89 |
+|  102 | gopal     |    85 |
+|  103 | parul     |    90 |
+|  104 | martunjay |    95 |
+|  105 | nikil     |  99.9 |
++------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> delete from student;
+Query OK, 5 rows affected (0.01 sec)
+
+mysql> select *from student;
+Empty set (0.00 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(5)      | YES  |     | NULL    |       |
+| name  | varchar(30) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> drop student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student' at line 1
+mysql> drop table student;
+Query OK, 0 rows affected (0.02 sec)
+
+
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.39-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| delldb             |
+| gopal              |
+| gopaldb            |
+| mysql              |
+| performance_schema |
+| rajudb             |
+| rrrdb              |
+| sys                |
++--------------------+
+9 rows in set (0.02 sec)
+
+mysql> use delldb;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_delldb |
++------------------+
+| student          |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select *from student;
++-----+-------+-------+------+
+| rno | name  | marks | age  |
++-----+-------+-------+------+
+| 101 | ROHAN | 99.99 |   23 |
+| 102 | mohan |    89 |   20 |
++-----+-------+-------+------+
+2 rows in set (0.02 sec)
+
+mysql> INSERT INTO student(name,marks,age) VALUES('GOPAL',100.0,21),
+    -> ('MRITUNJAY',100.0,30),
+    -> ('SHATAYAM',99.0,22),
+    -> ('NIKIL',80.0,20);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT NAME FROM student;
++-----------+
+| NAME      |
++-----------+
+| ROHAN     |
+| mohan     |
+| GOPAL     |
+| MRITUNJAY |
+| SHATAYAM  |
+| NIKIL     |
++-----------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT NAME , MARKS FROM student;
++-----------+-------+
+| NAME      | MARKS |
++-----------+-------+
+| ROHAN     | 99.99 |
+| mohan     |    89 |
+| GOPAL     |   100 |
+| MRITUNJAY |   100 |
+| SHATAYAM  |    99 |
+| NIKIL     |    80 |
++-----------+-------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT NAME , MARKS,AGE FROM student;
++-----------+-------+------+
+| NAME      | MARKS | AGE  |
++-----------+-------+------+
+| ROHAN     | 99.99 |   23 |
+| mohan     |    89 |   20 |
+| GOPAL     |   100 |   21 |
+| MRITUNJAY |   100 |   30 |
+| SHATAYAM  |    99 |   22 |
+| NIKIL     |    80 |   20 |
++-----------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT NAME , AGE , MARKS FROM student;
++-----------+------+-------+
+| NAME      | AGE  | MARKS |
++-----------+------+-------+
+| ROHAN     |   23 | 99.99 |
+| mohan     |   20 |    89 |
+| GOPAL     |   21 |   100 |
+| MRITUNJAY |   30 |   100 |
+| SHATAYAM  |   22 |    99 |
+| NIKIL     |   20 |    80 |
++-----------+------+-------+
+6 rows in set (0.00 sec)
+
+
+
+mysql> SELECT *FROM STUDENT WHERE NAME='GOPAL';
++-----+-------+-------+------+
+| rno | name  | marks | age  |
++-----+-------+-------+------+
+| 103 | GOPAL |   100 |   21 |
++-----+-------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *FROM STUDENT WHERE NAME IN('ROHAN','GOPAL','NIKIL');
++-----+-------+-------+------+
+| rno | name  | marks | age  |
++-----+-------+-------+------+
+| 101 | ROHAN | 99.99 |   23 |
+| 103 | GOPAL |   100 |   21 |
+| 106 | NIKIL |    80 |   20 |
++-----+-------+-------+------+
+3 rows in set (0.01 sec)
+
+
+mysql> SELECT *FROM STUDENT WHERE NAME NOT IN('ROHAN','GOPAL','NIKIL');
++-----+-----------+-------+------+
+| rno | name      | marks | age  |
++-----+-----------+-------+------+
+| 102 | mohan     |    89 |   20 |
+| 104 | MRITUNJAY |   100 |   30 |
+| 105 | SHATAYAM  |    99 |   22 |
++-----+-----------+-------+------+
+3 rows in set (0.00 sec)
+
+
+mysql> SELECT *FROM STUDENT WHERE MARKS>=80 AND MARKS<=90;
++-----+-------+-------+------+
+| rno | name  | marks | age  |
++-----+-------+-------+------+
+| 102 | mohan |    89 |   20 |
+| 106 | NIKIL |    80 |   20 |
++-----+-------+-------+------+
+2 rows in set (0.00 sec)
+
+
+mysql> UPDATE student SET name ='shyam' WHERE name  = 'mohan';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from student;
++-----+-----------+-------+------+
+| rno | name      | marks | age  |
++-----+-----------+-------+------+
+| 101 | ROHAN     | 99.99 |   23 |
+| 102 | shyam     |    89 |   20 |
+| 103 | GOPAL     |   100 |   21 |
+| 104 | MRITUNJAY |   100 |   30 |
+| 105 | SHATAYAM  |    99 |   22 |
+| 106 | NIKIL     |    80 |   20 |
++-----+-----------+-------+------+
+6 rows in set (0.00 sec)

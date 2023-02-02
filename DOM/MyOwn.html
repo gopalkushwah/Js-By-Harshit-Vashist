@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this is my own page</h1>
+    <p class="demo"></p>
+    <button onclick="myfunction()">Increment</button>
+    <button onclick="myfunction1()">Set 1</button>
+    <button onclick="myfunction2()">Decrement</button>
+    <script>
+        let x = 1;
+        console.log(document.querySelector(".demo"));
+        function myfunction(){
+            document.querySelector(".demo").innerHTML = x;
+            x+=1;
+        }
+        function myfunction1(){
+            x = 0;
+            document.querySelector(".demo").innerHTML = x;
+            
+        }
+        function myfunction2(){
+            document.querySelector(".demo").innerHTML = x;
+            --x;
+        }
+    </script>
+</body>
+</html>
